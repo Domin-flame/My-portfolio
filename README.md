@@ -1,1 +1,1 @@
-# This is my-portfolio, made with HTML and CSS with a modern design
+# This is my-portfolio, made with HTML, CSS and JavaScript with a modern design

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bediguile Ryan — Software Engineer</title>
+  <link rel="stylesheet" href="style3.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+</head>
+<body>
+
+  <!-- ── DESKTOP NAV ──────────────────────────────── -->
+  <nav id="desktop-nav">
+    <div class="logo">Bediguile<span class="accent-dot">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about" data-en="About" data-fr="À propos">About</a></li>
+      <li><a href="#services" data-en="Services" data-fr="Services">Services</a></li>
+      <li><a href="#certifications" data-en="Certifications" data-fr="Certifications">Certifications</a></li>
+      <li><a href="#skills" data-en="Skills" data-fr="Compétences">Skills</a></li>
+      <li><a href="#projects" data-en="Projects" data-fr="Projets">Projects</a></li>
+      <li><a href="https://dominicblog.me" target="_blank" rel="noopener" data-en="Blog" data-fr="Blog">Blog</a></li>
+      <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch language">EN / FR</button>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HAMBURGER NAV ────────────────────────────── -->
+  <nav id="hamburger-nav">
+    <div class="logo">Bediguile<span class="accent-dot">.</span></div>
+    <div class="hamburger-right">
+      <button class="lang-toggle" onclick="toggleLang()">EN / FR</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+        <ul class="menu-links">
+          <li><a href="#about" data-en="About" data-fr="À propos" onclick="toggleMenu()">About</a></li>
+          <li><a href="#services" data-en="Services" data-fr="Services" onclick="toggleMenu()">Services</a></li>
+          <li><a href="#certifications" data-en="Certifications" data-fr="Certifications" onclick="toggleMenu()">Certifications</a></li>
+          <li><a href="#skills" data-en="Skills" data-fr="Compétences" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#projects" data-en="Projects" data-fr="Projets" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="https://dominicblog.me" target="_blank" rel="noopener" data-en="Blog" data-fr="Blog" onclick="toggleMenu()">Blog</a></li>
+          <li><a href="#contact" data-en="Contact" data-fr="Contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <section id="profile">
+    <div class="profile-left">
+      <div class="hero-eyebrow">
+        <span data-en="Available for opportunities" data-fr="Disponible pour des opportunités">Available for opportunities</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span data-en="Building systems<br>that actually<br>" data-fr="Des systèmes<br>qui tiennent<br>">Building systems<br>that actually<br></span><span class="accent">hold up.</span>
+      </h1>
+
+      <p class="hero-sub"
+        data-en="Software engineering student at ICT University, Yaoundé. I ship fullstack applications, cloud infrastructure, and security-aware systems — with a bias for clean architecture and real-world impact."
+        data-fr="Étudiant en génie logiciel à ICT University, Yaoundé. Je conçois des applications fullstack, de l'infrastructure cloud et des systèmes orientés sécurité — avec un parti pris pour l'architecture propre et l'impact concret.">
+        Software engineering student at ICT University, Yaoundé. I ship fullstack applications, cloud infrastructure, and security-aware systems — with a bias for clean architecture and real-world impact.
+      </p>
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+        </div>
+        <div id="terminal-output"></div>
+        <div class="terminal-line"><span class="cursor"></span></div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="window.open('./mycv (1).pdf')">
+          <span data-en="Download CV" data-fr="Télécharger CV">Download CV</span>
+        </button>
+        <button class="btn btn-secondary" onclick="location.href='#contact'">
+          <span data-en="Contact me" data-fr="Me contacter">Contact me</span>
+        </button>
+      </div>
+
+      <div id="socials-container">
+        <a class="social-link" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <img src="./linkedin.png" alt="LinkedIn" />
+        </a>
+        <a class="social-link" href="https://github.com/Domin-flame" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <img src="./github.png" alt="GitHub" />
+        </a>
+        <a class="social-link" href="https://dominicblog.me" target="_blank" rel="noopener noreferrer" title="Blog">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="section__pic-container">
+      <div class="profile-img-wrapper">
+        <img src="./placeholder.svg" alt="Bediguile Ryan" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ─────────────────────────────────── -->
+  <div id="stats-bar">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-value" data-target="3" data-suffix="+">0+</div>
+        <div class="stat-label" data-en="Projects Shipped" data-fr="Projets livrés">Projects Shipped</div>
+      </div>
+      <div>
+        <div class="stat-value" data-target="2" data-suffix="">0</div>
+        <div class="stat-label" data-en="Certifications" data-fr="Certifications">Certifications</div>
+      </div>
+      <div>
+        <div class="stat-value" data-target="8" data-suffix="+">0+</div>
+        <div class="stat-label" data-en="Technologies" data-fr="Technologies">Technologies</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- ── ABOUT ─────────────────────────────────────── -->
+  <section id="about">
+    <p class="section-label" data-en="Who I am" data-fr="Qui je suis">Who I am</p>
+    <h2 class="title" data-en="About Me" data-fr="À propos">About Me</h2>
+    <div class="section-container">
+      <div class="section__pic-container">
+        <img src="./placeholder.svg" alt="Bediguile Ryan" class="about-pic" />
+      </div>
+      <div class="about-details-container">
+        <div class="about-cards">
+          <div class="about-card">
+            <img src="./placeholder.svg" alt="" class="icon" />
+            <h3 data-en="Full-Stack Dev" data-fr="Dev Full-Stack">Full-Stack Dev</h3>
+            <p data-en="Frontend & Backend" data-fr="Frontend & Backend">Frontend & Backend</p>
+          </div>
+          <div class="about-card">
+            <img src="./placeholder.svg" alt="" class="icon" />
+            <h3>ICT University</h3>
+            <p data-en="B.Sc. Software Engineering" data-fr="Licence Génie Logiciel">B.Sc. Software Engineering</p>
+          </div>
+        </div>
+        <p class="about-bio"
+          data-en="I'm a third-year Software Engineering student with a hands-on approach to building digital systems — from AI-powered video platforms to multi-pharmacy networks. I focus on real user needs to design intuitive, scalable applications. Currently deepening my expertise in cloud infrastructure and cybersecurity, with two industry certifications already earned."
+          data-fr="Étudiant en 3ème année de Génie Logiciel, je conçois des systèmes numériques concrets — des plateformes vidéo IA aux réseaux multi-pharmacies. Je place les besoins réels des utilisateurs au centre de ma démarche. Je renforce actuellement mes compétences en infrastructure cloud et cybersécurité, avec deux certifications professionnelles déjà obtenues.">
+          I'm a third-year Software Engineering student with a hands-on approach to building digital systems — from AI-powered video platforms to multi-pharmacy networks. I focus on real user needs to design intuitive, scalable applications. Currently deepening my expertise in cloud infrastructure and cybersecurity, with two industry certifications already earned.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── SERVICES ───────────────────────────────────── -->
+  <section id="services">
+    <p class="section-label" data-en="What I offer" data-fr="Ce que je propose">What I offer</p>
+    <h2 class="title" data-en="Services" data-fr="Services">Services</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 data-en="Web Development" data-fr="Développement Web">Web Development</h3>
+        <p data-en="Design and development of modern, responsive web applications — from a clean landing page to a complete fullstack platform with REST APIs, authentication, and database integration."
+           data-fr="Conception et développement d'applications web modernes et responsives — d'une simple landing page à une plateforme fullstack complète avec APIs REST, authentification et base de données.">
+          Design and development of modern, responsive web applications — from a clean landing page to a complete fullstack platform with REST APIs, authentication, and database integration.
+        </p>
+        <div class="service-tags">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Django</span><span class="tag">FastAPI</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+        </div>
+        <h3 data-en="Mobile App Development" data-fr="Développement Mobile">Mobile App Development</h3>
+        <p data-en="Development of cross-platform mobile applications with smooth UX. Interfaces adapted for Android and iOS, connected to robust backends."
+           data-fr="Développement d'applications mobiles multiplateformes avec une UX fluide. Interfaces adaptées Android et iOS, connectées à des backends robustes.">
+          Development of cross-platform mobile applications with smooth UX. Interfaces adapted for Android and iOS, connected to robust backends.
+        </p>
+        <div class="service-tags">
+          <span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <h3 data-en="Cloud & Infrastructure" data-fr="Cloud & Infrastructure">Cloud & Infrastructure</h3>
+        <p data-en="Deployment and management of applications on AWS — containerization with Docker, CI/CD pipeline setup, and cloud architecture optimized for performance and cost."
+           data-fr="Déploiement et gestion d'applications sur AWS — conteneurisation Docker, mise en place de pipelines CI/CD, et architecture cloud optimisée pour la performance et les coûts.">
+          Deployment and management of applications on AWS — containerization with Docker, CI/CD pipeline setup, and cloud architecture optimized for performance and cost.
+        </p>
+        <div class="service-tags">
+          <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">CI/CD</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01"/><path d="M15 9h.01"/><path d="M9 15h.01"/><path d="M15 15h.01"/></svg>
+        </div>
+        <h3 data-en="Software & OS Installation" data-fr="Logiciels & Installation OS">Software & OS Installation</h3>
+        <p data-en="Supply, installation, and configuration of operating systems and enterprise software — Windows, Linux distributions, office suites, and professional tools tailored to your needs."
+           data-fr="Fourniture, installation et configuration de systèmes d'exploitation et logiciels professionnels — Windows, distributions Linux, suites bureautiques et outils métiers adaptés à vos besoins.">
+          Supply, installation, and configuration of operating systems and enterprise software — Windows, Linux distributions, office suites, and professional tools tailored to your needs.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">Configuration</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── CERTIFICATIONS ────────────────────────────── -->
+  <section id="certifications">
+    <p class="section-label" data-en="Credentials" data-fr="Accréditations">Credentials</p>
+    <h2 class="title" data-en="Certifications" data-fr="Certifications">Certifications</h2>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-badge">
+          <!-- AWS logo SVG -->
+          <svg viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg" width="44">
+            <path d="M16.7 13.5c0 .6.1 1.1.2 1.4.2.4.4.8.7 1.2.1.2.2.3.2.5 0 .2-.1.4-.4.6l-1.2.8c-.2.1-.3.2-.5.2-.2 0-.4-.1-.5-.2-.3-.3-.5-.6-.7-.9-.2-.3-.4-.7-.6-1.1-1.4 1.7-3.2 2.5-5.3 2.5-1.5 0-2.7-.4-3.6-1.3-.9-.9-1.3-2-1.3-3.5 0-1.5.5-2.8 1.6-3.7 1.1-.9 2.5-1.4 4.3-1.4.6 0 1.2.1 1.9.2.7.1 1.3.3 2 .5V7.9c0-1.4-.3-2.4-.9-3-.6-.6-1.6-.9-3-.9-.6 0-1.3.1-2 .3-.7.2-1.4.4-2 .7-.3.1-.5.2-.6.2s-.2 0-.3-.1c-.1-.1-.1-.3-.1-.5V3.4c0-.3 0-.5.1-.6.1-.2.3-.3.6-.4.6-.3 1.4-.6 2.3-.8.9-.2 1.9-.3 2.9-.3 2.2 0 3.8.5 4.8 1.5 1 1 1.5 2.6 1.5 4.7v6zm-7.3 2.7c.6 0 1.2-.1 1.8-.3.6-.2 1.2-.6 1.7-1.1.3-.3.5-.6.6-1 .1-.4.2-.9.2-1.4v-.7c-.5-.1-1-.2-1.6-.3-.6-.1-1.1-.1-1.6-.1-1.1 0-2 .2-2.5.7-.6.4-.8 1.1-.8 1.9 0 .8.2 1.3.6 1.7.4.4 1 .6 1.6.6zm13.7 1.8c-.3 0-.5-.1-.6-.2-.1-.1-.3-.4-.4-.8L19 5.7c-.1-.4-.2-.7-.2-.8 0-.3.2-.5.5-.5h1.9c.3 0 .5.1.6.2.2.1.3.4.4.8l2.4 9.5 2.3-9.5c.1-.4.2-.7.4-.8.2-.1.4-.2.7-.2h1.6c.3 0 .6.1.7.2.1.1.3.4.4.8l2.3 9.6 2.5-9.6c.1-.4.2-.7.4-.8.2-.1.4-.2.6-.2h1.8c.3 0 .5.2.5.5 0 .1 0 .2-.1.4 0 .1-.1.3-.1.5l-3.6 12.3c-.1.4-.2.7-.4.8-.2.1-.4.2-.6.2h-1.7c-.3 0-.6-.1-.7-.2-.2-.1-.3-.4-.4-.8l-2.3-9.3-2.3 9.3c-.1.4-.2.7-.4.8-.2.1-.4.2-.7.2h-1.5zm19.5.4c-1 0-2-.1-2.9-.4-.9-.3-1.7-.6-2.2-1-.3-.2-.5-.4-.5-.7v-1.1c0-.3.1-.5.4-.5.1 0 .2 0 .3.1.1 0 .3.1.4.2.6.3 1.2.5 1.9.7.7.1 1.3.2 2 .2 1 0 1.8-.2 2.4-.5.5-.3.8-.8.8-1.5 0-.4-.2-.8-.5-1.1-.3-.3-1-.6-2-.9l-2.8-.9c-1.4-.4-2.4-1.1-3-1.9-.6-.8-.9-1.7-.9-2.7 0-.8.2-1.5.5-2.1.3-.6.8-1.1 1.4-1.6.6-.4 1.2-.8 2-1 .8-.2 1.6-.3 2.4-.3.4 0 .8 0 1.3.1.4.1.8.2 1.2.2.4.1.7.2 1 .3.3.1.6.2.7.3.2.1.4.3.5.5.1.1.1.3.1.5v1c0 .3-.1.5-.4.5-.1 0-.3-.1-.6-.2-.9-.4-1.9-.6-3-.6-.9 0-1.7.2-2.2.5-.5.3-.8.8-.8 1.5 0 .4.2.8.5 1.1.3.3 1 .6 2.2.9l2.8.9c1.4.4 2.4 1.1 3 1.9.6.8.9 1.7.9 2.6 0 .8-.2 1.5-.5 2.2-.3.7-.8 1.2-1.4 1.7-.6.4-1.3.8-2.1 1-.9.2-1.8.3-2.8.3z" fill="#FF9900"/>
+            <path d="M54.2 27.6c-6.3 4.7-15.5 7.1-23.4 7.1-11.1 0-21-4.1-28.5-10.9-.6-.5-.1-1.2.7-.8 8.1 4.7 18.1 7.5 28.4 7.5 7 0 14.6-1.4 21.7-4.4 1-.4 1.9.7.7 1.5zM57 24.3c-.8-1-.5-3.4 0-5.1.6-2.4 1.8-7.6-.4-9.4-.7-.6-1.7-.3-2.7 0-.4.2-1.4.5-1.9.8-.2.1-.5-.1-.4-.3.3-1.4 2-4.4 4.2-4.8.6-.1 1.3-.1 1.9.3 2.3 1.6 2 4.4 1.6 7.5-.2 2.2-.7 4.7.4 6.6.1.3-.3.6-.7.4z" fill="#FF9900"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h3>AWS Cloud Practitioner</h3>
+          <p data-en="Foundational AWS cloud architecture, services, security, and pricing models."
+             data-fr="Architecture cloud AWS, services, sécurité et modèles de tarification.">
+            Foundational AWS cloud architecture, services, security, and pricing models.
+          </p>
+          <span class="cert-tag earned" data-en="✓ Earned" data-fr="✓ Obtenu">✓ Earned</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-badge">
+          <!-- ISO shield icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6C47FF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h3>ISO/IEC 27001:2022</h3>
+          <p data-en="Information security management — risk assessment and security controls."
+             data-fr="Management de la sécurité de l'information — évaluation des risques et contrôles.">
+            Information security management — risk assessment and security controls.
+          </p>
+          <span class="cert-tag earned" data-en="✓ Earned" data-fr="✓ Obtenu">✓ Earned</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-badge">
+          <!-- Microsoft logo simplified -->
+          <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" width="36">
+            <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+            <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+            <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+            <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h3>Microsoft AI-200</h3>
+          <p data-en="Azure AI Fundamentals — AI workloads, machine learning, and Azure cognitive services."
+             data-fr="Fondamentaux Azure AI — charges de travail IA, machine learning et services cognitifs.">
+            Azure AI Fundamentals — AI workloads, machine learning, and Azure cognitive services.
+          </p>
+          <span class="cert-tag pending" data-en="⏳ In progress" data-fr="⏳ En cours">⏳ In progress</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── SKILLS ─────────────────────────────────────── -->
+  <section id="skills">
+    <p class="section-label" data-en="My toolkit" data-fr="Mes outils">My toolkit</p>
+    <h2 class="title" data-en="Skills" data-fr="Compétences">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title" data-en="Frontend" data-fr="Frontend">Frontend</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <span class="skill-name">HTML / CSS</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+            <span class="skill-level" data-en="Experienced" data-fr="Expérimenté">Experienced</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+            <span class="skill-level" data-en="Intermediate" data-fr="Intermédiaire">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">TypeScript</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+            <span class="skill-level" data-en="Intermediate" data-fr="Intermédiaire">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">React</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+            <span class="skill-level" data-en="Intermediate" data-fr="Intermédiaire">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">SASS</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div>
+            <span class="skill-level" data-en="Intermediate" data-fr="Intermédiaire">Intermediate</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title" data-en="Backend & Cloud" data-fr="Backend & Cloud">Backend & Cloud</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <span class="skill-name">Python</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+            <span class="skill-level" data-en="Experienced" data-fr="Expérimenté">Experienced</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Node / Express</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+            <span class="skill-level" data-en="Intermediate" data-fr="Intermédiaire">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Django / FastAPI</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+            <span class="skill-level" data-en="Intermediate" data-fr="Intermédiaire">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">AWS / Cloud</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+            <span class="skill-level" data-en="Intermediate" data-fr="Intermédiaire">Intermediate</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Docker</span>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:55%"></div></div>
+            <span class="skill-level" data-en="Basic" data-fr="Débutant">Basic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── PROJECTS ───────────────────────────────────── -->
+  <section id="projects">
+    <p class="section-label" data-en="Recent work" data-fr="Travaux récents">Recent work</p>
+    <h2 class="title" data-en="Projects" data-fr="Projets">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-img-wrap project-placeholder" data-name="MirageAI">
+          <div class="placeholder-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            <span>MirageAI</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Python</span><span class="tag">FastAPI</span>
+            <span class="tag">Stable Diffusion</span><span class="tag">PyTorch</span>
+          </div>
+          <h3 class="project-name">MirageAI</h3>
+          <p class="project-desc"
+            data-en="An AI-powered platform that transforms photos and text prompts into engaging marketing videos using open-source generative AI models. Built on Stable Diffusion Turbo and Diffusers for real-time generation."
+            data-fr="Une plateforme IA qui transforme photos et textes en vidéos marketing engageantes à l'aide de modèles d'IA générative open-source. Construite sur Stable Diffusion Turbo et Diffusers pour une génération en temps réel.">
+            An AI-powered platform that transforms photos and text prompts into engaging marketing videos using open-source generative AI models. Built on Stable Diffusion Turbo and Diffusers for real-time generation.
+          </p>
+          <div class="project-links">
+            <button class="btn btn-secondary" onclick="location.href='https://github.com/Domin-flame/AIMirage'">GitHub</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap project-placeholder" data-name="Pharma-Connect">
+          <div class="placeholder-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Pharma-Connect</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">React</span><span class="tag">TypeScript</span>
+            <span class="tag">Django</span><span class="tag">Tailwind</span>
+          </div>
+          <h3 class="project-name">Pharma-Connect</h3>
+          <p class="project-desc"
+            data-en="A platform connecting multiple pharmacy databases with patients, enabling efficient medicine search across locations — reducing unnecessary walks and improving healthcare access."
+            data-fr="Une plateforme connectant plusieurs bases de données de pharmacies aux patients, permettant de rechercher des médicaments efficacement — réduisant les déplacements inutiles et améliorant l'accès aux soins.">
+            A platform connecting multiple pharmacy databases with patients, enabling efficient medicine search across locations — reducing unnecessary walks and improving healthcare access.
+          </p>
+          <div class="project-links">
+            <button class="btn btn-secondary" onclick="location.href='https://github.com/Domin-flame/pharma-connect'">GitHub</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap project-placeholder" data-name="Globetrotter">
+          <div class="placeholder-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>Globetrotter</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Docker</span>
+          </div>
+          <h3 class="project-name">Globetrotter</h3>
+          <p class="project-desc"
+            data-en="A monolithic Flask application serving as the foundation for a semester-long capstone project — containerized with Docker and designed for progressive feature expansion."
+            data-fr="Une application Flask monolithique servant de base à un projet de fin de semestre — conteneurisée avec Docker et conçue pour une extension progressive des fonctionnalités.">
+            A monolithic Flask application serving as the foundation for a semester-long capstone project — containerized with Docker and designed for progressive feature expansion.
+          </p>
+          <div class="project-wip" data-en="⏳ In progress" data-fr="⏳ En cours">⏳ In progress</div>
+          <div class="project-links">
+            <button class="btn btn-secondary" onclick="location.href='https://github.com/Domin-flame/globetrotter-capstone'">GitHub</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ── BLOG CTA ────────────────────────────────────── -->
+  <section id="blog-cta">
+    <div class="blog-cta-inner">
+      <div class="blog-cta-text">
+        <p class="section-label" data-en="Writing" data-fr="Écrits">Writing</p>
+        <h2 data-en="I also write about tech." data-fr="J'écris aussi sur la tech.">I also write about tech.</h2>
+        <p data-en="Cloud, software engineering, security and AI — I share what I learn on my personal blog."
+           data-fr="Cloud, génie logiciel, sécurité et IA — je partage ce que j'apprends sur mon blog personnel.">
+          Cloud, software engineering, security and AI — I share what I learn on my personal blog.
+        </p>
+      </div>
+      <a href="https://dominicblog.me" target="_blank" rel="noopener noreferrer" class="btn btn-primary blog-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span data-en="Read the blog" data-fr="Lire le blog">Read the blog</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────────────────── -->
+  <section id="contact">
+    <p class="section-label" data-en="Let's work together" data-fr="Travaillons ensemble">Let's work together</p>
+    <h2 class="title" data-en="Get in touch." data-fr="Contactez-moi.">Get in touch.</h2>
+    <p class="hero-sub"
+      data-en="I'm open to internships, freelance missions, and collaborative projects. Drop me a message — I reply within 24 hours."
+      data-fr="Je suis ouvert aux stages, missions freelance et projets collaboratifs. Envoyez-moi un message — je réponds sous 24h.">
+      I'm open to internships, freelance missions, and collaborative projects. Drop me a message — I reply within 24 hours.
+    </p>
+    <div class="contact-box">
+      <div class="contact-item">
+        <img src="./email.png" alt="Email" />
+        <a href="mailto:Dominicbediguile@gmail.com">Dominicbediguile@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <img src="./linkedin.png" alt="LinkedIn" />
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" data-en="LinkedIn" data-fr="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────── -->
+  <footer>
+    <div class="logo">Bediguile<span class="accent-dot">.</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about" data-en="About" data-fr="À propos">About</a></li>
+        <li><a href="#services" data-en="Services" data-fr="Services">Services</a></li>
+        <li><a href="#projects" data-en="Projects" data-fr="Projets">Projects</a></li>
+        <li><a href="https://dominicblog.me" target="_blank" rel="noopener">Blog</a></li>
+        <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+      </ul>
+    </nav>
+    <p>© 2026 BEDIGUILE Ryan. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

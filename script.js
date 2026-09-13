@@ -13,7 +13,6 @@ document.querySelectorAll(".menu-links a").forEach(link => {
 /* ── DARK MODE ───────────────────────────────── */
 const root = document.documentElement;
 
-// On load: respect OS preference, then stored preference
 (function initTheme() {
   const stored = localStorage.getItem("theme");
   if (stored) {
@@ -30,7 +29,6 @@ function toggleTheme() {
   localStorage.setItem("theme", next);
 }
 
-// Also respond if OS preference changes
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
   if (!localStorage.getItem("theme")) {
     root.setAttribute("data-theme", e.matches ? "dark" : "light");
@@ -43,22 +41,22 @@ let currentLang = localStorage.getItem("lang") || "en";
 function applyLang(lang) {
   document.querySelectorAll("[data-en][data-fr]").forEach(el => {
     const text = lang === "fr" ? el.dataset.fr : el.dataset.en;
-    if (text) {
-      // Handle innerHTML for elements that contain <br> or HTML
-      if (text.includes("<br>") || text.includes("<")) {
-        el.innerHTML = text;
-      } else {
-        el.textContent = text;
-      }
+    if (!text) return;
+    if (text.includes("<br>") || text.includes("<")) {
+      el.innerHTML = text;
+    } else {
+      el.textContent = text;
     }
   });
-  // Update hero title accent span (it's inside the h1 but not a data-* element itself)
+
+  // Hero accent word
   const accent = document.querySelector(".hero-title .accent");
   if (accent) accent.textContent = lang === "fr" ? "vraiment." : "hold up.";
 
   document.querySelectorAll(".lang-toggle").forEach(btn => {
     btn.textContent = lang === "fr" ? "FR / EN" : "EN / FR";
   });
+
   currentLang = lang;
   localStorage.setItem("lang", lang);
 }
@@ -67,14 +65,13 @@ function toggleLang() {
   applyLang(currentLang === "en" ? "fr" : "en");
 }
 
-// Apply on load
 applyLang(currentLang);
 
-/* ── TERMINAL ANIMATION ─────────────────────── */
+/* ── TERMINAL ────────────────────────────────── */
 function animateTerminal() {
   const terminal = document.querySelector("#terminal-output");
   if (!terminal) return;
-  
+
   const lines = [
     "<span class='cmd'>❯</span> <span class='val'>npm run deploy</span>",
     "<span class='val'>» Building application...</span>",
@@ -82,24 +79,23 @@ function animateTerminal() {
     "<span class='val'>» Deploying to production</span>",
     "<span class='val'>✓ Deployment successful</span>"
   ];
-  
-  let lineIndex = 0;
-  const typeNextLine = () => {
-    if (lineIndex < lines.length) {
-      const line = document.createElement('div');
-      line.innerHTML = lines[lineIndex];
-      terminal.appendChild(line);
-      lineIndex++;
-      setTimeout(typeNextLine, 400);
-    }
+
+  let i = 0;
+  const next = () => {
+    if (i >= lines.length) return;
+    const el = document.createElement("div");
+    el.innerHTML = lines[i];
+    el.style.opacity = "0";
+    terminal.appendChild(el);
+    setTimeout(() => { el.style.opacity = "1"; el.style.transition = "opacity 0.3s"; }, 30);
+    i++;
+    setTimeout(next, 420);
   };
-  
-  typeNextLine();
+  next();
 }
 
-// Animate terminal on page load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', animateTerminal);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", animateTerminal);
 } else {
   animateTerminal();
 }
@@ -132,3 +128,67 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll("#skills, #stats-bar").forEach(el => observer.observe(el));
 
+/* ── WORDPRESS BLOG ARTICLES ─────────────────── */
+async function loadArticles() {
+  const grid = document.getElementById("articles-grid");
+  if (!grid) return;
+
+  const lang = currentLang;
+  const readLabel   = lang === "fr" ? "Lire l'article →" : "Read article →";
+  const errorLabel  = lang === "fr"
+    ? "Impossible de charger les articles pour l'instant. <a href='https://dominicblog.me' target='_blank'>Visiter le blog →</a>"
+    : "Couldn't load articles right now. <a href='https://dominicblog.me' target='_blank'>Visit the blog →</a>";
+
+  try {
+    const res = await fetch(
+      "https://dominicblog.me/wp-json/wp/v2/posts?per_page=3&_fields=id,title,excerpt,date,link,featured_media,_links",
+      { signal: AbortSignal.timeout(6000) }
+    );
+
+    if (!res.ok) throw new Error("API error");
+    const posts = await res.json();
+
+    // Fetch featured images in parallel
+    const mediaIds = posts.map(p => p.featured_media).filter(id => id);
+    const mediaMap = {};
+    if (mediaIds.length) {
+      await Promise.all(mediaIds.map(async id => {
+        try {
+          const r = await fetch(`https://dominicblog.me/wp-json/wp/v2/media/${id}?_fields=id,source_url`, { signal: AbortSignal.timeout(4000) });
+          if (r.ok) { const m = await r.json(); mediaMap[id] = m.source_url; }
+        } catch {}
+      }));
+    }
+
+    grid.innerHTML = posts.map(post => {
+      const date = new Date(post.date).toLocaleDateString(lang === "fr" ? "fr-FR" : "en-GB", { year: "numeric", month: "short", day: "numeric" });
+      const title = post.title.rendered.replace(/&amp;/g, "&").replace(/&#8211;/g, "–").replace(/&#8217;/g, "'");
+      const excerpt = post.excerpt.rendered.replace(/<[^>]+>/g, "").replace(/\[&hellip;\]|\[…\]/g, "…").trim().slice(0, 120) + (post.excerpt.rendered.length > 120 ? "…" : "");
+      const imgUrl = mediaMap[post.featured_media];
+
+      const thumb = imgUrl
+        ? `<div class="article-thumb"><img src="${imgUrl}" alt="${title}" loading="lazy" /></div>`
+        : `<div class="article-thumb"><div class="article-thumb-placeholder"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div></div>`;
+
+      return `
+        <a class="article-card" href="${post.link}" target="_blank" rel="noopener noreferrer">
+          ${thumb}
+          <div class="article-body">
+            <div class="article-date">${date}</div>
+            <div class="article-title">${title}</div>
+            <div class="article-excerpt">${excerpt}</div>
+            <div class="article-read">${readLabel} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          </div>
+        </a>`;
+    }).join("");
+
+  } catch {
+    grid.innerHTML = `<div class="articles-error">${errorLabel}</div>`;
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", loadArticles);
+} else {
+  loadArticles();
+}

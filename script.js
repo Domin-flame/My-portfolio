@@ -67,37 +67,38 @@ function toggleLang() {
 
 applyLang(currentLang);
 
-/* ── TERMINAL ────────────────────────────────── */
-function animateTerminal() {
-  const terminal = document.querySelector("#terminal-output");
-  if (!terminal) return;
+/* ── TERMINAL TYPEWRITER ───────────────────────────────── */
+const terminalLines = {
+  en: [
+    { cmd: "stack",  val: "React · TypeScript · Python"  },
+    { cmd: "cloud",  val: "AWS · Docker · FastAPI"       },
+    { cmd: "sec",    val: "ISO 27001 · Ethical Hacking"  },
+    { cmd: "status", val: "Open to opportunities ✓"      },
+  ],
+  fr: [
+    { cmd: "stack",  val: "React · TypeScript · Python"     },
+    { cmd: "cloud",  val: "AWS · Docker · FastAPI"          },
+    { cmd: "sec",    val: "ISO 27001 · Hacking éthique"     },
+    { cmd: "statut", val: "Disponible pour opportunités ✓"  },
+  ]
+};
 
-  const lines = [
-    "<span class='cmd'>❯</span> <span class='val'>npm run deploy</span>",
-    "<span class='val'>» Building application...</span>",
-    "<span class='val'>» Bundling assets complete</span>",
-    "<span class='val'>» Deploying to production</span>",
-    "<span class='val'>✓ Deployment successful</span>"
-  ];
-
+const terminalEl = document.getElementById("terminal-output");
+if (terminalEl) {
   let i = 0;
-  const next = () => {
+  const lines = terminalLines[currentLang] || terminalLines.en;
+  const type = () => {
     if (i >= lines.length) return;
+    const { cmd, val } = lines[i++];
     const el = document.createElement("div");
-    el.innerHTML = lines[i];
-    el.style.opacity = "0";
-    terminal.appendChild(el);
-    setTimeout(() => { el.style.opacity = "1"; el.style.transition = "opacity 0.3s"; }, 30);
-    i++;
-    setTimeout(next, 420);
+    el.className = "terminal-line";
+    el.innerHTML = `<span class="cmd">$ ${cmd}</span>  <span class="val">${val}</span>`;
+    el.style.cssText = "opacity:0;transition:opacity 0.3s";
+    terminalEl.appendChild(el);
+    requestAnimationFrame(() => el.style.opacity = "1");
+    setTimeout(type, 680);
   };
-  next();
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", animateTerminal);
-} else {
-  animateTerminal();
+  setTimeout(type, 400);
 }
 
 /* ── ANIMATED COUNTERS ───────────────────────── */
